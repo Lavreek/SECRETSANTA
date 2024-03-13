@@ -1,0 +1,21 @@
+{% if isAuthorized() %}
+    {% set gameBuilder = getGameBuilderForm() %}
+<turbo-stream action="replace" target="game-preview">
+    <template>
+        {{ form_start(gameBuilder, {'action' : path('app_game_build')}) }}
+        {{ form_end(gameBuilder) }}
+    </template>
+</turbo-stream>
+{% else %}
+    <turbo-stream action="replace" target="game-preview">
+        <template>
+            <div class="game-preview">
+                <h5 class="text-title">Чтобы создать игру, необходимо зарегистрироваться</h5>
+                <div class="game-preview-control">
+                    <div>
+                        <a href="{{ path('app_register') }}">Зарегистрироваться</a>
+                    </div>
+                </div>
+        </template>
+    </turbo-stream>
+{% endif %}

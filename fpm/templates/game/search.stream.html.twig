@@ -1,0 +1,27 @@
+{% if isAuthorized() %}
+<turbo-stream action="replace" target="game-preview">
+    <template>
+        {% if games|length < 1 %}
+            Тайный сайта не найден.
+        {% else %}
+            <div style="display: flex; flex-direction: column; row-gap: 20px;">
+                {% for game in games %}
+                    <a href="/game/{{ game.getIdentifier() }}">{{ game.getName() }}</a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </template>
+</turbo-stream>
+{% else %}
+    <turbo-stream action="replace" target="game-preview">
+        <template>
+            <div class="game-preview">
+                <h5 class="text-title">Чтобы найти игру, необходимо авторизироваться</h5>
+                <div class="game-preview-control">
+                    <div>
+                        <a href="{{ path('app_login') }}">Войти</a>
+                    </div>
+                </div>
+        </template>
+    </turbo-stream>
+{% endif %}

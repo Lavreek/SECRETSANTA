@@ -1,0 +1,20 @@
+<header class="header">
+    <div class="top-line">
+        <div class="logo">
+            <img src="{{ asset('images/header/logo.svg') }}">
+        </div>
+        <h1>Секретный санта</h1>
+        {% if isAuthorized() %}
+            <div class="authorized">
+                <h5 class="username">{{ getUsername()|raw }}</h5>
+                <div class="logout">
+                    <a href="{{ path('app_login') }}">Выйти</a>
+                </div>
+            </div>
+        {% else %}
+            <div class="login">
+                <a href="{{ path('app_login') }}">Войти</a>
+            </div>
+        {% endif %}
+    </div>
+</header>

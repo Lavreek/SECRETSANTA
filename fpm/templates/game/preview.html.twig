@@ -1,0 +1,16 @@
+{% set gameCreate = getGameCreateForm() %}
+{% set gameSearch = getGameSearchForm() %}
+
+<div class="site-container">
+    <turbo-frame id="game-preview">
+        <div class="game-preview">
+            <h5 class="text-title">Найдите или создайте игру</h5>
+            <div class="game-preview-control">
+                {{ form_start(gameCreate, {'action' : path('app_game_create')}) }}
+                {{ form_end(gameCreate) }}
+                {{ form_start(gameSearch, {'action' : path('app_game_search')}) }}
+                {{ form_end(gameSearch) }}
+            </div>
+        </div>
+    </turbo-frame>
+</div>

@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+$default-padding-lr : 100px;
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+}
+
+.site-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding-right: $default-padding-lr;
+    padding-left: $default-padding-lr;
+}
+
+@import "./layouts/header";
+@import "./layouts/game";
+@import "./layouts/auth";

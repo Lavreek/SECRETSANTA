@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Комната тайного санты {{ game_name }} {% endblock %}
+{% block body %}
+    <div class="site-container">
+        <div style="display: flex; justify-content: end">
+            <p>Пригласить санту</p>
+            {{ form_start(invite_form) }}
+            {{ form_end(invite_form) }}
+        </div>
+    </div>
+{% endblock %}
