@@ -21,12 +21,8 @@ class GameBuilderType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Название комнаты'
             ])
-            ->add('start', DateTimeType::class, [
-                'label' => 'Начало игры'
-            ])
-            ->add('end', DateTimeType::class, [
-                'label' => 'Конец игры'
-            ])
+            ->add('start', HiddenType::class)
+            ->add('end', HiddenType::class)
             ->add('identifier', HiddenType::class)
             ->add('owner', HiddenType::class)
             ->add('send', SubmitType::class, [

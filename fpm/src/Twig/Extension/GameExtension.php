@@ -25,6 +25,7 @@ class GameExtension extends AbstractExtension
             new TwigFunction('getGameCreateForm', [GameRuntime::class, 'getGameCreateForm']),
             new TwigFunction('getGameSearchForm', [GameRuntime::class, 'getGameSearchForm']),
             new TwigFunction('getGameBuilderForm', [GameRuntime::class, 'getGameBuilderForm']),
+            new TwigFunction('changeShuffleWish', [GameRuntime::class, 'changeShuffleWish']),
         ];
     }
 }

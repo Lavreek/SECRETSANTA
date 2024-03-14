@@ -23,7 +23,6 @@ class Shuffle
     private ?string $wish = null;
 
     #[ORM\ManyToOne]
-    #[ORM\Column(nullable: true)]
     private ?User $giver = null;
 
     public function getId(): ?int

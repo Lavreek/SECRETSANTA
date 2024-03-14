@@ -6,7 +6,11 @@ use App\Form\GameBuilderType;
 use App\Form\GameCreateType;
 use App\Form\GameInviteType;
 use App\Form\GameSearchType;
+use App\Form\ShuffleChangeType;
+use App\Form\ShuffleWishType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\UX\Turbo\TurboBundle;
 use Twig\Extension\RuntimeExtensionInterface;
 
 class GameRuntime extends AbstractController implements RuntimeExtensionInterface
@@ -31,6 +35,12 @@ class GameRuntime extends AbstractController implements RuntimeExtensionInterfac
     public function getGameSearchForm()
     {
         $form = $this->createForm(GameSearchType::class);
+        return $form->createView();
+    }
+
+    public function changeShuffleWish()
+    {
+        $form = $this->createForm(ShuffleChangeType::class);
         return $form->createView();
     }
 }

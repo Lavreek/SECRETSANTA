@@ -55,8 +55,8 @@ class AuthController extends AbstractController
                 (new TemplatedEmail())
                     ->from(new Address('noreply@yourdwell.ru', 'Secret Santa'))
                     ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
-                    ->htmlTemplate('auth/confirmation_email.html.twig')
+                    ->subject('Пожалуйста подтвердите учётную запись')
+                    ->htmlTemplate('mailing/confirmation_email.html.twig')
             );
 
             // do anything else you need here, like send an email

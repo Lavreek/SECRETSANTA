@@ -6,7 +6,7 @@
             {% else %}
                 <div style="display: flex; flex-direction: column; row-gap: 20px;">
                     {% for game in games %}
-                        <a href="/game/{{ game.getIdentifier() }}">{{ game.getName() }}</a>
+                        <a href="{{ path('app_game_identifier', {'identifier' : game.getIdentifier()}) }}">{{ game.getName() }}</a>
                     {% endfor %}
                 </div>
             {% endif %}

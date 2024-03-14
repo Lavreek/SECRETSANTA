@@ -3,28 +3,46 @@
 {% block title %} Комната тайного санты {{ game_name }} {% endblock %}
 {% block body %}
     <div class="site-container">
-        {% if owner %}
-            <div class="game-owner-panel" style="">
-                <p class="text">Пригласить санту</p>
-                {{ form_start(invite_form, {'attr' : {'class' : 'game-invite-santa'}}) }}
-                {{ form_end(invite_form) }}
-            </div>
+        {% if isShuffled %}
+        {% else %}
+            {% if isOwner %}
+                <div class="game-owner-panel" style="">
+                    <p class="text">Пригласить санту</p>
+                    {{ form_start(invite_form) }}
+                    {{ form_end(invite_form) }}
+                </div>
+                <div class="game-owner-panel justify-between">
+                    <h5>Чтобы начать игру необходимо минимум 4 человека</h5>
+                    {% if users|length < 4 %}
+                        <p>Нехватает {{ 4 - users|length }} игроков.</p>
+                    {% else %}
+                        {{ form_start(start_form) }}
+                        {{ form_end(start_form) }}
+                    {% endif %}
+                </div>
+            {% endif %}
         {% endif %}
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 50px;">
-            <div class="profile" style="display:flex; flex-direction: column;">
+        <div class="wishes-container">
+            <div class="your-wish" style="">
                 <h2>{{ user_name }}&nbsp;</h2>
-                <textarea style="height: 300px;">{{ user_wish }}</textarea>
+                <turbo-frame id="shuffle-wish">
+                    <p>Ваше пожелание:</p>
+                    <p class="wish">{{ user_wish }}</p>
+                    {{ form_start(shuffle_change_form) }}
+                    {{ form_end(shuffle_change_form) }}
+                </turbo-frame>
             </div>
-            <div class="your-target" style="display:flex; flex-direction: column;">
+            <div class="target-wish">
                 <h2>{{ target_name }}&nbsp;</h2>
-                <textarea style="height: 300px;">{{ target_wish }}</textarea>
+                <p>Пожелание вашей цели:</p>
+                <p class="wish">{{ target_wish }}</p>
             </div>
         </div>
         <h2>Тайные санты:</h2>
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); width: 100%;">
             {% for user in users %}
                 <div>
-                    {{ user.getUser().getUsername() }}
+                    <p>{{ user.getUser().getUsername() }}</p>
                 </div>
             {% endfor %}
         </div>
