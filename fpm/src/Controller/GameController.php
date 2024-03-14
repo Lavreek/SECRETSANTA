@@ -42,8 +42,8 @@ class GameController extends AbstractController
             $game = new Game();
             $game->setIdentifier($identifier);
             $game->setName($task->getName());
-            $game->setStart($task->getStart());
-            $game->setEnd($task->getEnd());
+            // $game->setStart($task->getStart());
+            // $game->setEnd($task->getEnd());
             $game->setOwner($user);
             $game->setShuffled(false);
 
