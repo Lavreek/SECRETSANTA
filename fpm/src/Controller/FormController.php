@@ -7,6 +7,8 @@ use App\Entity\Shuffle;
 use App\Entity\User;
 use App\Form\GameCreateType;
 use App\Form\GameSearchType;
+use App\Form\ShuffleChangeType;
+use App\Form\ShuffleWishType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,5 +66,23 @@ class FormController extends AbstractController
         }
 
         return $this->render('game/preview.html.twig');
+    }
+
+    #[Route('/shuffle/wish/change', name: 'app_shuffle_wish_change')]
+    public function shuffleWishChange(Request $request): ?Response
+    {
+        $wishChangeForm = $this->createForm(ShuffleChangeType::class);
+        $wishChangeForm->handleRequest($request);
+
+        if ($wishChangeForm->isSubmitted()) {
+            $options['shuffle_wish_form'] = $this->createForm(ShuffleWishType::class);
+
+            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+                $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+                return $this->render('game/shuffle_wish.stream.html.twig', $options);
+            }
+        }
+
+        return null;
     }
 }

@@ -14,7 +14,10 @@ class ShuffleWishType extends AbstractType
     {
         $builder
             ->add('wish', TextareaType::class, [
-                'label' => 'Ваше пожелание:'
+                'label' => 'Ваше пожелание:',
+                'attr' => [
+                    'class' => 'wish'
+                ]
             ])
             ->add('send', SubmitType::class, [
                 'label' => 'Сохранить'
@@ -25,6 +28,9 @@ class ShuffleWishType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
+            'attr' => [
+                'style' => 'margin: 0; max-width: unset;'
+            ]
             // Configure your form options here
         ]);
     }

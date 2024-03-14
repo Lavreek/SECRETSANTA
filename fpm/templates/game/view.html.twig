@@ -16,7 +16,7 @@
                     {% if users|length < 4 %}
                         <p>Нехватает {{ 4 - users|length }} игроков.</p>
                     {% else %}
-                        {{ form_start(start_form) }}
+                        {{ form_start(start_form, {'attr' : {'class' : 'margin-0'}}) }}
                         {{ form_end(start_form) }}
                     {% endif %}
                 </div>
@@ -28,7 +28,7 @@
                 <turbo-frame id="shuffle-wish">
                     <p>Ваше пожелание:</p>
                     <p class="wish">{{ user_wish }}</p>
-                    {{ form_start(shuffle_change_form) }}
+                    {{ form_start(shuffle_change_form, {'action' : path('app_shuffle_wish_change')}) }}
                     {{ form_end(shuffle_change_form) }}
                 </turbo-frame>
             </div>
@@ -39,9 +39,9 @@
             </div>
         </div>
         <h2>Тайные санты:</h2>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); width: 100%;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; column-gap: 30px; row-gap: 30px;">
             {% for user in users %}
-                <div>
+                <div style="min-width: 100px; height: 100px; margin: auto; padding: 1em; border-radius: 15px; border: 1px solid red; display: flex; justify-content: center; align-items: center">
                     <p>{{ user.getUser().getUsername() }}</p>
                 </div>
             {% endfor %}

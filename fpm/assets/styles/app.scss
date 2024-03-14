@@ -46,6 +46,7 @@ button {
     color: white;
     background: rgb(224, 50, 50);
     font-size: 14px;
+    cursor: pointer;
 }
 
 p, label, h1,h2,h3,h4,h5 {
@@ -58,6 +59,12 @@ p, label, h1,h2,h3,h4,h5 {
 .justify-between {
     justify-content: space-between !important;
 }
+
+.margin-0 {
+    margin: 0 !important;
+}
+
+
 
 @import "./layouts/header";
 @import "./layouts/game";

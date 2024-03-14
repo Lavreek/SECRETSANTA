@@ -1,8 +1,6 @@
 <turbo-stream action="replace" target="shuffle-wish">
     <template>
-        <div class="site-container">
-            {{ form_start(shuffle_wish_form) }}
-            {{ form_end(shuffle_wish_form) }}
-        </div>
+        {{ form_start(shuffle_wish_form, {'attr' : {'id' : 'shuffle-wish'}}) }}
+        {{ form_end(shuffle_wish_form) }}
     </template>
 </turbo-stream>

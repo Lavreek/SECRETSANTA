@@ -77,16 +77,6 @@ class GameController extends AbstractController
         $options['shuffle_change_form'] = $this->createForm(ShuffleChangeType::class);
         $options['shuffle_wish_form'] = $this->createForm(ShuffleWishType::class);
 
-        $options['shuffle_change_form']->handleRequest($request);
-
-        if ($options['shuffle_change_form']->isSubmitted()) {
-            $options['shuffle_wish_form'] = $this->createForm(ShuffleWishType::class);
-
-            if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
-                $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
-                return $this->render('game/shuffle_wish.stream.html.twig', $options);
-            }
-        }
 
         $userHandler = new UserHandler($registry);
         $user = $userHandler->getUserByEmail($this->getUser()->getUserIdentifier());
