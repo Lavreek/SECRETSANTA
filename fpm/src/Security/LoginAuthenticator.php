@@ -2,7 +2,6 @@
 
 namespace App\Security;
 
-use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -42,14 +41,18 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
             new UserBadge($email),
             new PasswordCredentials($request->request->get('password', '')),
             [
-                new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),            ]
+                new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
+            ]
         );
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        $email = $request->request->get('email', '');
+        /**
+         * Если пользователь подтвердил учётную запись
+         *
 
+        $email = $request->request->get('email', '');
         $userRepository = $this->managerRegistry->getRepository(User::class);
         $user = $userRepository->findOneBy(['email' => $email]);
 
@@ -57,6 +60,7 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
             $this->security->logout(false);
             return new RedirectResponse($this->urlGenerator->generate('app_login'));
         }
+         */
 
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);

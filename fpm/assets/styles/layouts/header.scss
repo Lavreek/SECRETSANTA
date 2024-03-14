@@ -8,6 +8,11 @@
     padding-right: $default-padding-lr;
     background-color: rgba(224, 50, 50, .65);
 
+    a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
     .top-line {
         display: flex;
         flex-direction: row;
@@ -25,21 +30,28 @@
             cursor: pointer;
             height: 50px;
 
+            a {
+                display: inherit;
+                width: inherit;
+                height: inherit;
+            }
+
             img {
                 height: 100%;
             }
         }
 
-        h1 {
+        .title {
             font-size: 20px;
             font-weight: 500;
             color: white;
-            cursor: default;
         }
 
         .authorized {
             display: flex;
             column-gap: 20px;
+            justify-content: center;
+            align-items: center;
 
             .username {
                 font-size: 16px;
@@ -59,7 +71,6 @@
                 font-size: 16px;
                 font-weight: 400;
                 color: white;
-                text-decoration: none;
             }
         }
     }

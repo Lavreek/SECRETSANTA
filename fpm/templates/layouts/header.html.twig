@@ -1,14 +1,16 @@
 <header class="header">
     <div class="top-line">
         <div class="logo">
-            <img src="{{ asset('images/header/logo.svg') }}">
+            <a href="{{ path('app_root') }}">
+                <img src="{{ asset('images/header/logo.svg') }}">
+            </a>
         </div>
-        <h1>Секретный санта</h1>
+        <a class="title" href="{{ path('app_root') }}">Секретный санта</a>
         {% if isAuthorized() %}
             <div class="authorized">
                 <h5 class="username">{{ getUsername()|raw }}</h5>
                 <div class="logout">
-                    <a href="{{ path('app_login') }}">Выйти</a>
+                    <a href="{{ path('app_logout') }}">Выйти</a>
                 </div>
             </div>
         {% else %}

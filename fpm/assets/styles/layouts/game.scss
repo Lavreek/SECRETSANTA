@@ -36,4 +36,56 @@
             }
         }
     }
+
+    &-form-builder {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 20px;
+        margin: 40px;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+        }
+    }
+
+    &-owner-panel {
+        display: flex;
+        justify-content: end;
+        column-gap: 10px;
+        margin-top: 2em;
+        margin-bottom: 2em;
+
+        .text {
+            font-family: "Inter", sans-serif;
+            font-size: 14px;
+        }
+    }
+
+    &-invite-santa {
+        display: flex;
+        column-gap: 10px;
+
+        input {
+            font-family: "Inter", sans-serif;
+            padding: 10px;
+            outline: 0;
+            border: 1px solid rgb(224, 50, 50);
+            font-size: 14px;
+            border-radius: 10px;
+        }
+
+        button {
+            font-family: "Inter", sans-serif;
+            padding: 10px;
+            border-radius: 10px;
+            border: 0;
+            color: white;
+            background: rgb(224, 50, 50);
+            font-size: 14px;
+        }
+    }
 }

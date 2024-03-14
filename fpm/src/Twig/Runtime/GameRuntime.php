@@ -4,6 +4,7 @@ namespace App\Twig\Runtime;
 
 use App\Form\GameBuilderType;
 use App\Form\GameCreateType;
+use App\Form\GameInviteType;
 use App\Form\GameSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Twig\Extension\RuntimeExtensionInterface;
@@ -12,7 +13,7 @@ class GameRuntime extends AbstractController implements RuntimeExtensionInterfac
 {
     public function __construct()
     {
-        // Inject dependencies if needed
+
     }
 
     public function getGameBuilderForm()

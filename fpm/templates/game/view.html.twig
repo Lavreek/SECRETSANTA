@@ -3,10 +3,30 @@
 {% block title %} Комната тайного санты {{ game_name }} {% endblock %}
 {% block body %}
     <div class="site-container">
-        <div style="display: flex; justify-content: end">
-            <p>Пригласить санту</p>
-            {{ form_start(invite_form) }}
-            {{ form_end(invite_form) }}
+        {% if owner %}
+            <div class="game-owner-panel" style="">
+                <p class="text">Пригласить санту</p>
+                {{ form_start(invite_form, {'attr' : {'class' : 'game-invite-santa'}}) }}
+                {{ form_end(invite_form) }}
+            </div>
+        {% endif %}
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 50px;">
+            <div class="profile" style="display:flex; flex-direction: column;">
+                <h2>{{ user_name }}&nbsp;</h2>
+                <textarea style="height: 300px;">{{ user_wish }}</textarea>
+            </div>
+            <div class="your-target" style="display:flex; flex-direction: column;">
+                <h2>{{ target_name }}&nbsp;</h2>
+                <textarea style="height: 300px;">{{ target_wish }}</textarea>
+            </div>
+        </div>
+        <h2>Тайные санты:</h2>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); width: 100%;">
+            {% for user in users %}
+                <div>
+                    {{ user.getUser().getUsername() }}
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
